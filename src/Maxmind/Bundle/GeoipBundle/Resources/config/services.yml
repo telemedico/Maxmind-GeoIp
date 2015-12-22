@@ -2,10 +2,11 @@
 services:
     maxmind.geoip:
         class:      Maxmind\Bundle\GeoipBundle\Service\GeoipManager
-        arguments:  [@kernel]
+        arguments:  [ "@kernel" ]
+
     maxmind.geoip.twig_extension:
         class:      Maxmind\Bundle\GeoipBundle\Twig\GeoipExtension
         public:     false
-        arguments:  [@maxmind.geoip]
+        arguments:  [ "@maxmind.geoip" ]
         tags:
             - { name: twig.extension }
