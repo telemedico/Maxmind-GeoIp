@@ -22,7 +22,7 @@ class GeoipManager
 
     protected function getGeoip()
     {
-        if ($this->geoip instanceof GeoIp)
+        if (!$this->geoip instanceof GeoIp)
             $this->geoip = new GeoIp($this->filePath);
 
         return $this->geoip;
