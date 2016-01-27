@@ -15,9 +15,9 @@ class GeoipManager
 
     protected $record;
 
-    public function __construct(Kernel $kernel)
+    public function __construct($filePath)
     {
-    	$this->filePath = $kernel->getContainer()->getParameter('maxmind_geoip_data_file_path');
+    	$this->filePath = $filePath;
     }
 
     protected function getGeoip()
