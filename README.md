@@ -64,7 +64,7 @@ Now can use the Maxmind GeoIp Library everywhere in your Symfony2 application.
 Usage
 -----
 
-The following exemples are available if you are in a controller
+The following examples are available if you are in a controller
 
 ```php
 $geoip = $this->get('maxmind.geoip')->lookup(%IP_ADDR%);
@@ -99,8 +99,8 @@ Or in twig file
 {{ ip|geoip|continentCode }}
 ```
 
-You can add a demo route in your 'routing_dev' to get an exemple on how
-this bundle work for exemple:
+You can add a demo route in your 'routing_dev' to get an example on how
+this bundle work for example:
 
 ```yaml
 _maxmind_geoip:
