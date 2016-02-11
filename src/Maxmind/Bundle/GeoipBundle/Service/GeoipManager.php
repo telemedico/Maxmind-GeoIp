@@ -2,8 +2,6 @@
 
 namespace Maxmind\Bundle\GeoipBundle\Service;
 
-use Symfony\Component\HttpKernel\Kernel;
-
 use Maxmind\lib\GeoIp;
 use Maxmind\lib\GeoIpRegionVars;
 
