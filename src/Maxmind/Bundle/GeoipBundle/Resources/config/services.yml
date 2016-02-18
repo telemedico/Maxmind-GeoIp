@@ -2,7 +2,7 @@
 services:
     maxmind.geoip:
         class:      Maxmind\Bundle\GeoipBundle\Service\GeoipManager
-        arguments:  [ "@kernel" ]
+        arguments:  [ %maxmind_geoip_data_file_path% ]
 
     maxmind.geoip.twig_extension:
         class:      Maxmind\Bundle\GeoipBundle\Twig\GeoipExtension
