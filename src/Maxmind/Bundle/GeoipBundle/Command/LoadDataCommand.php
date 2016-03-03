@@ -4,11 +4,9 @@ namespace Maxmind\Bundle\GeoipBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\Output;
-use Symfony\Component\Finder\Finder;
 
 class LoadDataCommand extends Command
 {
@@ -46,23 +44,33 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $source = $input->getArgument('source');
-
-        $bundlePath = $this->getApplication()->getKernel()->getBundle('MaxmindGeoipBundle')->getPath();
+        /** @var \Symfony\Bundle\FrameworkBundle\Console\Application $application */
+        $application = $this->getApplication();
+        $bundlePath = $application->getKernel()->getBundle('MaxmindGeoipBundle')->getPath();
         $dataDir = sprintf('%s', $bundlePath.'/../../../../data/');
         $filename = basename($source);
         $destination = sprintf('%s/%s', $dataDir, $filename);
-        $output->writeln(sprintf('Start downloading %s', $source));
-        $output->writeln('...');
+        $verbose = $output instanceof Output && $output->isVerbose();
+        if ($verbose) {
+            $output->writeln(sprintf('Start downloading %s', $source));
+            $output->writeln('...');
+        }
         if (!copy($source, $destination)) {
-            $output->writeln('<error>Error during file download occured</error>');
+            if ($verbose) {
+                $output->writeln('<error>Error during file download occured</error>');
+            }
 
             return 1;
         }
 
-        $output->writeln('<info>Download completed</info>');
-        $output->writeln('Unzip the downloading data');
-        $output->writeln('...');
+        if ($verbose) {
+            $output->writeln('<info>Download completed</info>');
+            $output->writeln('Unzip the downloading data');
+            $output->writeln('...');
+        }
         system('gunzip -f "'.$destination.'"');
-        $output->writeln('<info>Unzip completed</info>');
+        if ($verbose) {
+            $output->writeln('<info>Unzip completed</info>');
+        }
     }
 }
