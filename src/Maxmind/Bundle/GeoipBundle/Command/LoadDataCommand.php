@@ -44,9 +44,7 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $source = $input->getArgument('source');
-        /** @var \Symfony\Bundle\FrameworkBundle\Console\Application $application */
-        $application = $this->getApplication();
-        $bundlePath = $application->getKernel()->getBundle('MaxmindGeoipBundle')->getPath();
+        $bundlePath = $this->getApplication()->getKernel()->getBundle('MaxmindGeoipBundle')->getPath();
         $dataDir = sprintf('%s', $bundlePath.'/../../../../data/');
         $filename = basename($source);
         $destination = sprintf('%s/%s', $dataDir, $filename);
