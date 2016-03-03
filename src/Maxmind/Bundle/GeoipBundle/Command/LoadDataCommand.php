@@ -56,9 +56,7 @@ EOT
             $output->writeln('...');
         }
         if (!copy($source, $destination)) {
-            if ($verbose) {
-                $output->writeln('<error>Error during file download occured</error>');
-            }
+            $output->writeln('<error>Error during file download occured</error>');
 
             return 1;
         }
