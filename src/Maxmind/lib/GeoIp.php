@@ -252,8 +252,7 @@ class GeoIp {
 
         $fp = fopen($file, "rb");
         if (!$fp) {
-            print "error opening $file: $php_errormsg\n";
-            exit;
+            throw new \RuntimeException('Could not open file at path: ' . $file);
         }
         $s_array = fstat($fp);
         $size = $s_array['size'];
@@ -391,7 +390,10 @@ class GeoIp {
         if ($this->flags & self::GEOIP_SHARED_MEMORY) {
             $this->shmid = @shmop_open (self::GEOIP_SHM_KEY, "a", 0, 0);
         } else {
-            $this->filehandle = fopen($this->filename,"rb") or die("Can not open $this->filename\n" );
+            $this->filehandle = fopen($this->filename,"rb");
+            if (!$this->filehandle) {
+                throw new \RuntimeException('Could not open file at path: ' . $this->filename);
+            }
             if ($this->flags & self::GEOIP_MEMORY_CACHE) {
                 $s_array = fstat($this->filehandle);
                 $this->memory_buffer = fread($this->filehandle, $s_array['size']);
