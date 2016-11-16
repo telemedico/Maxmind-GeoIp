@@ -85,18 +85,18 @@ $geoip->getContinentCode();
 Or in twig file
 
 ```twig
-{{ ip|geoip|countryCode }}
-{{ ip|geoip|countryCode3 }}
-{{ ip|geoip|countryName }}
-{{ ip|geoip|regionCode }}
-{{ ip|geoip|region }}
-{{ ip|geoip|city }}
-{{ ip|geoip|postalCode }}
-{{ ip|geoip|latitude }}
-{{ ip|geoip|longitude }}
-{{ ip|geoip|areaCode }}
-{{ ip|geoip|metroCode }}
-{{ ip|geoip|continentCode }}
+{{ ip|geoip.countryCode }}
+{{ ip|geoip.countryCode3 }}
+{{ ip|geoip.countryName }}
+{{ ip|geoip.regionCode }}
+{{ ip|geoip.region }}
+{{ ip|geoip.city }}
+{{ ip|geoip.postalCode }}
+{{ ip|geoip.latitude }}
+{{ ip|geoip.longitude }}
+{{ ip|geoip.areaCode }}
+{{ ip|geoip.metroCode }}
+{{ ip|geoip.continentCode }}
 ```
 
 You can add a demo route in your 'routing_dev' to get an example on how
