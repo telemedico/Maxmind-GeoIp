@@ -179,14 +179,15 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("NA", $manager->getContinentCode());
     }
 
+    //Explanation for this function :
     //http://www.php.net/manual/en/language.types.float.php#language.types.float.comparison
     //TLDR : float has precision issues
     private function compareFloat($a, $b)
     {
-        if (abs($a-$b) < 0.00001)
-        {
+        if (abs($a-$b) < 0.00001) {
             return true;
         }
+
         return false;
     }
 }
