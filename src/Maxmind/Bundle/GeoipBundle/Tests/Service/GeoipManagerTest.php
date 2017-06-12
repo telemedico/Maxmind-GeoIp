@@ -6,8 +6,12 @@ use Maxmind\Bundle\GeoipBundle\Service\GeoipManager;
 class GeoipManagerTest extends \PHPUnit_Framework_TestCase
 {
     protected $ip;
+    protected $otherIp;
     protected $geoipManager;
 
+    /**
+     * Initialize the ip variables and loads the data
+     */
     public function setUp()
     {
         $this->ip = '88.160.233.80';
@@ -179,9 +183,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("NA", $manager->getContinentCode());
     }
 
-    //Explanation for this function :
-    //http://www.php.net/manual/en/language.types.float.php#language.types.float.comparison
-    //TLDR : float has precision issues
+    /**
+     * Explanation for this function :
+     * http://www.php.net/manual/en/language.types.float.php#language.types.float.comparison
+     * TLDR : float type has precision issues
+     * @param $a, $b float : numbers to compare
+     * @return true if the numbers are equal at 0.00001 precision
+     */
     private function compareFloat($a, $b)
     {
         if (abs($a-$b) < 0.00001) {
