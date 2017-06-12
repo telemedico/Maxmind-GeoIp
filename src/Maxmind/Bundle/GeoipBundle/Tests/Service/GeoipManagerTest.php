@@ -187,7 +187,8 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
      * Explanation for this function :
      * http://www.php.net/manual/en/language.types.float.php#language.types.float.comparison
      * TLDR : float type has precision issues
-     * @param $a, $b float : numbers to compare
+     * @param float $a : 1st number to compare
+     * @param float $b : 2nd number to compare
      * @return true if the numbers are equal at 0.00001 precision
      */
     private function compareFloat($a, $b)
