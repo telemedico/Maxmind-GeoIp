@@ -4,6 +4,7 @@ target_container    ?= php
 php_sources         ?= .
 js_sources          ?= Resources/public/js
 phpcs_ignored_files ?= vendor/*,app/cache/*
+fix_sources			?= src
 
 # PHP commands
 
@@ -29,7 +30,7 @@ phpcs:
 
 .PHONY: phpcs-fix
 phpcs-fix:
-	docker run --rm -i -v `pwd`:`pwd` -w `pwd` grachev/php-cs-fixer --rules=@Symfony --verbose fix $(sources)
+	docker run --rm -i -v `pwd`:`pwd` -w `pwd` grachev/php-cs-fixer --rules=@Symfony --verbose --cache-file=.git/.php_cs.cache fix $(fix_sources)
 
 .PHONY: phpcpd
 phpcpd:

@@ -2,4 +2,3 @@ data/*.dat
 *~
 vendor
 *.lock
-.php_cs.cache
