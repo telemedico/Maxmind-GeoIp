@@ -10,9 +10,10 @@ php:
 
 before-install:
     - docker-compose up -d
-    - make composer-install options="--no-interaction"
+    # - make composer-install options="--no-interaction"
 
 script:
+    - make composer-install options="--no-interaction"
     - make phpunit
     # - make phpcs
 
