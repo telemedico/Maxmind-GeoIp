@@ -1,0 +1,20 @@
+language: php
+
+sudo: required
+
+services:
+  - docker
+
+php:
+  - '5.6'
+
+before-install:
+    - make composer-update options="--no-interaction"
+
+script:
+    - make phpunit
+    # - make phpcs
+
+notifications:
+    on_success: always
+    on_failure: always
