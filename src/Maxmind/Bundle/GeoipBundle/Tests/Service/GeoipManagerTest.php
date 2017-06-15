@@ -1,4 +1,5 @@
 <?php
+
 namespace Maxmind\Bundle\GeoipBundle\Tests\GeoipManager;
 
 use Maxmind\Bundle\GeoipBundle\Service\GeoipManager;
@@ -10,19 +11,19 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
     protected $geoipManager;
 
     /**
-     * Initialize the ip variables and loads the data
+     * Initialize the ip variables and loads the data.
      */
     public function setUp()
     {
         $this->ip = '88.160.233.80';
         $this->otherIp = '72.229.28.185';
-        $this->geoipManager = new GeoipManager(__DIR__."/../data/GeoLiteCity.dat");
+        $this->geoipManager = new GeoipManager(__DIR__.'/../data/GeoLiteCity.dat');
     }
 
     public function testLookup()
     {
         $manager = $this->geoipManager;
-        $this->assertFalse($manager->lookup("dummy"));
+        $this->assertFalse($manager->lookup('dummy'));
         $this->assertEquals(GeoipManager::class, get_class($manager->lookup($this->ip)));
         $this->assertEquals(GeoipManager::class, get_class($manager->lookup($this->otherIp)));
     }
@@ -32,13 +33,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getCountryCode());
-        $this->assertNull($manager->getCountryCode("dummy"));
+        $this->assertNull($manager->getCountryCode('dummy'));
 
-        $this->assertEquals("FR", $manager->getCountryCode($this->ip));
-        $this->assertEquals("FR", $manager->getCountryCode());
+        $this->assertEquals('FR', $manager->getCountryCode($this->ip));
+        $this->assertEquals('FR', $manager->getCountryCode());
 
-        $this->assertEquals("US", $manager->getCountryCode($this->otherIp));
-        $this->assertEquals("US", $manager->getCountryCode());
+        $this->assertEquals('US', $manager->getCountryCode($this->otherIp));
+        $this->assertEquals('US', $manager->getCountryCode());
     }
 
     public function testGetCountryCode3()
@@ -46,13 +47,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getCountryCode3());
-        $this->assertNull($manager->getCountryCode3("dummy"));
+        $this->assertNull($manager->getCountryCode3('dummy'));
 
-        $this->assertEquals("FRA", $manager->getCountryCode3($this->ip));
-        $this->assertEquals("FRA", $manager->getCountryCode3());
+        $this->assertEquals('FRA', $manager->getCountryCode3($this->ip));
+        $this->assertEquals('FRA', $manager->getCountryCode3());
 
-        $this->assertEquals("USA", $manager->getCountryCode3($this->otherIp));
-        $this->assertEquals("USA", $manager->getCountryCode3());
+        $this->assertEquals('USA', $manager->getCountryCode3($this->otherIp));
+        $this->assertEquals('USA', $manager->getCountryCode3());
     }
 
     public function testGetCountryName()
@@ -60,14 +61,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getCountryName());
-        $this->assertNull($manager->getCountryName("dummy"));
+        $this->assertNull($manager->getCountryName('dummy'));
 
+        $this->assertEquals('France', $manager->getCountryName($this->ip));
+        $this->assertEquals('France', $manager->getCountryName());
 
-        $this->assertEquals("France", $manager->getCountryName($this->ip));
-        $this->assertEquals("France", $manager->getCountryName());
-
-        $this->assertEquals("United States", $manager->getCountryName($this->otherIp));
-        $this->assertEquals("United States", $manager->getCountryName());
+        $this->assertEquals('United States', $manager->getCountryName($this->otherIp));
+        $this->assertEquals('United States', $manager->getCountryName());
     }
 
     public function testGetRegionCode()
@@ -75,14 +75,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getRegionCode());
-        $this->assertNull($manager->getRegionCode("dummy"));
+        $this->assertNull($manager->getRegionCode('dummy'));
 
+        $this->assertEquals('B9', $manager->getRegionCode($this->ip));
+        $this->assertEquals('B9', $manager->getRegionCode());
 
-        $this->assertEquals("B9", $manager->getRegionCode($this->ip));
-        $this->assertEquals("B9", $manager->getRegionCode());
-
-        $this->assertEquals("NY", $manager->getRegionCode($this->otherIp));
-        $this->assertEquals("NY", $manager->getRegionCode());
+        $this->assertEquals('NY', $manager->getRegionCode($this->otherIp));
+        $this->assertEquals('NY', $manager->getRegionCode());
     }
 
     public function testGetRegion()
@@ -90,13 +89,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getRegion());
-        $this->assertNull($manager->getRegion("dummy"));
+        $this->assertNull($manager->getRegion('dummy'));
 
-        $this->assertEquals("Rhone-Alpes", $manager->getRegion($this->ip));
-        $this->assertEquals("Rhone-Alpes", $manager->getRegion());
+        $this->assertEquals('Rhone-Alpes', $manager->getRegion($this->ip));
+        $this->assertEquals('Rhone-Alpes', $manager->getRegion());
 
-        $this->assertEquals("New York", $manager->getRegion($this->otherIp));
-        $this->assertEquals("New York", $manager->getRegion());
+        $this->assertEquals('New York', $manager->getRegion($this->otherIp));
+        $this->assertEquals('New York', $manager->getRegion());
     }
 
     public function testGetCity()
@@ -104,13 +103,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getCity());
-        $this->assertNull($manager->getCity("dummy"));
+        $this->assertNull($manager->getCity('dummy'));
 
-        $this->assertEquals("Villeurbanne", $manager->getCity($this->ip));
-        $this->assertEquals("Villeurbanne", $manager->getCity());
+        $this->assertEquals('Villeurbanne', $manager->getCity($this->ip));
+        $this->assertEquals('Villeurbanne', $manager->getCity());
 
-        $this->assertEquals("New York", $manager->getCity($this->otherIp));
-        $this->assertEquals("New York", $manager->getCity());
+        $this->assertEquals('New York', $manager->getCity($this->otherIp));
+        $this->assertEquals('New York', $manager->getCity());
     }
 
     public function testGetPostalCode()
@@ -118,13 +117,13 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getPostalCode());
-        $this->assertNull($manager->getPostalCode("dummy"));
+        $this->assertNull($manager->getPostalCode('dummy'));
 
-        $this->assertEquals("69100", $manager->getPostalCode($this->ip));
-        $this->assertEquals("69100", $manager->getPostalCode());
+        $this->assertEquals('69100', $manager->getPostalCode($this->ip));
+        $this->assertEquals('69100', $manager->getPostalCode());
 
-        $this->assertEquals("10036", $manager->getPostalCode($this->otherIp));
-        $this->assertEquals("10036", $manager->getPostalCode());
+        $this->assertEquals('10036', $manager->getPostalCode($this->otherIp));
+        $this->assertEquals('10036', $manager->getPostalCode());
     }
 
     public function testGetLatitude()
@@ -132,7 +131,7 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getLatitude());
-        $this->assertNull($manager->getLatitude("dummy"));
+        $this->assertNull($manager->getLatitude('dummy'));
 
         $this->assertTrue($this->compareFloat(45.7655, $manager->getLatitude($this->ip)));
         $this->assertTrue($this->compareFloat(45.7655, $manager->getLatitude()));
@@ -146,7 +145,7 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getAreaCode());
-        $this->assertNull($manager->getAreaCode("dummy"));
+        $this->assertNull($manager->getAreaCode('dummy'));
 
         $this->assertNull($manager->getAreaCode($this->ip));
         $this->assertNull($manager->getAreaCode());
@@ -160,7 +159,7 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getMetroCode());
-        $this->assertNull($manager->getMetroCode("dummy"));
+        $this->assertNull($manager->getMetroCode('dummy'));
 
         $this->assertNull($manager->getMetroCode($this->ip));
         $this->assertNull($manager->getMetroCode());
@@ -174,26 +173,28 @@ class GeoipManagerTest extends \PHPUnit_Framework_TestCase
         $manager = $this->geoipManager;
 
         $this->assertNull($manager->getContinentCode());
-        $this->assertNull($manager->getContinentCode("dummy"));
+        $this->assertNull($manager->getContinentCode('dummy'));
 
-        $this->assertEquals("EU", $manager->getContinentCode($this->ip));
-        $this->assertEquals("EU", $manager->getContinentCode());
+        $this->assertEquals('EU', $manager->getContinentCode($this->ip));
+        $this->assertEquals('EU', $manager->getContinentCode());
 
-        $this->assertEquals("NA", $manager->getContinentCode($this->otherIp));
-        $this->assertEquals("NA", $manager->getContinentCode());
+        $this->assertEquals('NA', $manager->getContinentCode($this->otherIp));
+        $this->assertEquals('NA', $manager->getContinentCode());
     }
 
     /**
      * Explanation for this function :
      * http://www.php.net/manual/en/language.types.float.php#language.types.float.comparison
-     * TLDR : float type has precision issues
+     * TLDR : float type has precision issues.
+     *
      * @param float $a : 1st number to compare
      * @param float $b : 2nd number to compare
+     *
      * @return true if the numbers are equal at 0.00001 precision
      */
     private function compareFloat($a, $b)
     {
-        if (abs($a-$b) < 0.00001) {
+        if (abs($a - $b) < 0.00001) {
             return true;
         }
 

@@ -27,6 +27,10 @@ phploc:
 phpcs:
 	docker run --rm -i -v `pwd`:/project jolicode/phaudit bash -c 'phpcs $(php_sources) --extensions=php --ignore=$(phpcs_ignored_files) --standard=PSR2; exit $$?'
 
+.PHONY: phpcs-fix
+phpcs-fix:
+	docker run --rm -i -v `pwd`:`pwd` -w `pwd` grachev/php-cs-fixer --rules=@Symfony --verbose fix $(sources)
+
 .PHONY: phpcpd
 phpcpd:
 	docker run --rm -i -v `pwd`:/project jolicode/phaudit bash -c 'phpcpd $(php_sources); exit $$?'
