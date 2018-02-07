@@ -122,3 +122,8 @@ Get a lookup at /demo/geoip
 
 This library is an import of Maxmind GeoIp Free Library,
 you can find at http://www.maxmind.com/
+
+[build-image]: https://img.shields.io/travis/IDCI-Consulting/Maxmind-GeoIp.svg?style=flat
+[build-url]: https://travis-ci.org/IDCI-Consulting/Maxmind-GeoIp
+[insight-image]: https://insight.sensiolabs.com/projects/f853833b-1b46-4280-a3aa-3c9a8b7c7ed7/mini.png
+[insight-url]: https://insight.sensiolabs.com/projects/f853833b-1b46-4280-a3aa-3c9a8b7c7ed7
