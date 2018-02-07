@@ -24,7 +24,7 @@ RUN apt-get install zlib1g-dev -y && docker-php-ext-install zip
 # RUN apt-get install -y libmagickwand-dev && pecl install imagick  && docker-php-ext-enable imagick
 
 # xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 
 # php.ini
 COPY php.ini /usr/local/etc/php/
