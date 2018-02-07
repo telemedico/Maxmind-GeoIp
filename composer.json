@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "MaxMind GeoIP Symfony2 Bundle",
     "keywords": ["maxmind geoip"],
-    "license": "BSD",
+    "license": "BSD-2-Clause",
     "require": {
         "php": ">=5.3"
     },
