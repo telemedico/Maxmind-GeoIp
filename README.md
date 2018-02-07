@@ -1,4 +1,13 @@
-# Maxmind GeoIp Library #
+Maxmind GeoIp Library
+=====================
+
+Symfony bundle to easily use maxmind geoip bundle.
+
+[![SensioLabsInsight][insight-image]][insight-url]
+[![Build][build-image]][build-url]
+
+Installation
+------------
 
 To install this library please follow the next steps:
 
@@ -34,7 +43,7 @@ public function registerBundles()
 
 Now the library is installed.
 
-To get the maxmind data source file (in '.dat' format), you can choose between 
+To get the maxmind data source file (in '.dat' format), you can choose between
 one of the two following purposed methods:
 
 You can go on the maxmind free download data page:
