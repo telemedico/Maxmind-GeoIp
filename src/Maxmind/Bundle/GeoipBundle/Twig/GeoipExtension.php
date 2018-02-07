@@ -10,7 +10,7 @@ use Maxmind\Bundle\GeoipBundle\Service\GeoipManager;
 use Twig_Environment;
 
 /**
- * Class GeoipExtension
+ * Class GeoipExtension.
  */
 class GeoipExtension extends \Twig_Extension
 {
@@ -47,7 +47,7 @@ class GeoipExtension extends \Twig_Extension
                 array($this, 'getCode'),
                 array(
                     'is_safe' => array('html'),
-                    'needs_environment' => true
+                    'needs_environment' => true,
                 )
             ),
         );
@@ -66,7 +66,9 @@ class GeoipExtension extends \Twig_Extension
     /**
      * @param Twig_Environment $env
      * @param $template
+     *
      * @return bool|mixed
+     *
      * @throws \Twig_Error_Runtime
      */
     public function getCode(Twig_Environment $env, $template)
@@ -79,6 +81,7 @@ class GeoipExtension extends \Twig_Extension
                 }
             }
         }
+
         return false;
     }
 

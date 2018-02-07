@@ -4,6 +4,7 @@ target_container    ?= php
 php_sources         ?= .
 js_sources          ?= Resources/public/js
 phpcs_ignored_files ?= vendor/*,app/cache/*
+fix_path			?= src
 
 # PHP commands
 
@@ -26,6 +27,10 @@ phploc:
 .PHONY: phpcs
 phpcs:
 	docker run --rm -i -v `pwd`:/project jolicode/phaudit bash -c 'phpcs $(php_sources) --extensions=php --ignore=$(phpcs_ignored_files) --standard=PSR2; exit $$?'
+
+.PHONY: phpcs-fix
+phpcs-fix:
+	docker run --rm -i -v `pwd`:`pwd` -w `pwd` grachev/php-cs-fixer --rules=@Symfony --verbose --cache-file=.git/.php_cs.cache fix $(fix_path)
 
 .PHONY: phpcpd
 phpcpd:
